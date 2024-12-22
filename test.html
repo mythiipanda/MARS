@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UVA Mechatronics and Robotics Society (MARS)</title>
+    <link rel="icon" href="/images/big-cut-logo.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Text&family=Lexend:wght@100..900&display=swap" rel="stylesheet">
+    <style>
+        body {
+            margin: 0;
+            font-family: Lexend, sans-serif;
+            overflow-x: hidden;
+        }
+
+        h1, h2 {
+            margin: 0;
+        }
+
+        .hero {
+            position: relative;
+            height: 100vh;
+            overflow: hidden;
+        }
+
+        .maintitle {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            text-align: center;
+            padding: 100px;
+            background: linear-gradient(to bottom, rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0.25));
+        }
+
+        .maintitle h1 {
+            font-size: 5.5em;
+        }
+
+        .maintitle h2 {
+            font-size: 2em;
+            margin-top: 20px;
+        }
+
+        .background {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 200%;
+            height: 100%;
+            background: url('./images/MARS_TEAM.jpg') no-repeat center center;
+            background-size: cover;
+            animation: pan 30s ease-in-out infinite;
+            z-index: -2;
+        }
+
+        @keyframes pan {
+            0%, 100% {
+                transform: translateX(-50%);
+            }
+            50% {
+                transform: translateX(0%);
+            }
+        }
+
+        .header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 10px 20px;
+            transition: background-color 0.3s ease, box-shadow 0.3s ease;
+            z-index: 1000;
+            background-color: transparent;
+            color: rgb(255,255,255);
+        }
+
+        .header.scrolled {
+            background-color: white;
+            color: rgb(0, 0, 0);
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+
+        .logo img {
+            width: 50px;
+            margin-right: 10px;
+        }
+
+        .logo h1 {
+            font-size: 1.5em;
+            color: black;
+        }
+
+        .nav {
+            display: flex;
+            gap: 20px;
+        }
+
+        .nav a {
+            text-decoration: none;
+            font-weight: normal;
+            transition: font-weight 0.2s;
+        }
+
+        .nav a.active {
+            font-weight: bold;
+        }
+
+        .nav a:hover {
+            text-decoration: underline;
+        }
+
+        @media (max-width: 480px) {
+            .maintitle {
+                padding: 20px;
+            }
+
+            .maintitle h1 {
+                font-size: 3rem;
+            }
+
+            .maintitle h2 {
+                font-size: 1.5rem;
+                margin-top: 20px;
+            }
+
+            .logo h1 {
+                font-size: 1.2em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header" id="header">
+        <div class="logo">
+            <img src="./images/blue-logo.jpg" alt="MARS Logo">
+            <h1>MARS</h1>
+        </div>
+        <nav class="nav">
+            <a href="index.html" class="active">Home</a>
+            <a href="team.html">Team</a>
+            <a href="blog.html">Blog</a>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <div class="hero">
+        <div class="background"></div>
+        <div class="maintitle">
+            <h1>UVA Mechatronics and Robotics Society (MARS)</h1>
+            <h2>NASA Lunabotics Team</h2>
+        </div>
+    </div>
+    <div class="hero">
+        <div class="background"></div>
+        <div class="maintitle">
+            <h1>UVA Mechatronics and Robotics Society (MARS)</h1>
+            <h2>NASA Lunabotics Team</h2>
+        </div>
+    </div>
+
+    <script>
+        const header = document.getElementById('header');
+
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
+
+    </script>
+</body>
+</html>

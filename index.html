@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UVA Mechatronics and Robotics Society (MARS)</title>
+    <link rel="icon" href="/images/big-cut-logo.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Text&family=Lexend:wght@100..900&display=swap" rel="stylesheet">
+    <style>
+        body {
+            margin: 0;
+            font-family: Lexend;
+            overflow: hidden;
+        }
+
+        h1{
+            font-family: Lexend;
+        }
+
+        .hero {
+            position: relative;
+            height: 100vh;
+            overflow: hidden;
+        }
+
+        .maintitle {
+            display: flex;
+            flex-direction: column;
+            /* align-items: center; */
+            justify-content: center;
+            color: white;
+            text-align: center;
+            padding: 100px;
+            background: linear-gradient(to bottom, rgba(0, 0, 0, 0.95), rgba(0, 0, 0, 0.7));
+        }
+
+        .maintitle h1 {
+            font-size: 5.5em;
+            margin: 0;
+            z-index: 1;
+        }
+
+        .maintitle h2 {
+            font-size: 2em;
+            margin: 0;
+            z-index: 1;
+            margin-top: 20px;
+        }
+         
+        .fadingbox {
+            width: 100%;
+            height: 100px;
+            background: linear-gradient(to bottom, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0));
+        }
+
+        .background {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 200%;
+            height: 100%;
+            background: url('./images/MARS_TEAM.jpg') no-repeat center center;
+            background-size: cover;
+            animation: pan 30s ease-in-out infinite;
+            animation-delay: -7.5s; /* Starts at 25% of a 30s animation */
+            z-index: -2;
+        }
+
+        @keyframes pan {
+            0%, 100% {
+                transform: translateX(-50%);
+            }
+            50% {
+                transform: translateX(0%);
+            }
+        }
+
+        @media  (max-width: 480px) {
+            .hero {
+                background: url('./images/ELECTRICAL_FUN.jpg') no-repeat center center;
+                background-size: cover;
+            }
+            .background {    
+                background: none; 
+                animation: none; 
+                height: 0;
+            }
+            .maintitle {
+                padding-left: 10px;
+                padding-right: 10px;
+            }
+            .maintitle > h1 {
+                font-size: 3rem;
+            }
+
+            .maintitle > h2 {
+                margin-top: 50px;
+                font-size: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="hero">
+        <div class="background"></div>
+        <!-- <div class="overlay"></div> -->
+        <div class="maintitle">
+            <h1>UVA Mechatronics and Robotics Society (MARS)</h1>
+            <h2>NASA Lunabotics Team</h2>
+        </div>
+        <div class="fadingbox"></div>
+    </div>
+</body>
+</html>

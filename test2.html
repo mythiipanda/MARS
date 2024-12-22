@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UVA Mechatronics and Robotics Society (MARS)</title>
+    <link rel="icon" href="/images/big-cut-logo.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Text&family=Lexend:wght@100..900&display=swap" rel="stylesheet">
+    <style>
+        body {
+            margin: 0;
+            font-family: Lexend;
+            background-color: #f9f9f9;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        h1, h2 {
+            font-family: Lexend;
+        }
+
+        .hero {
+            position: relative;
+            height: 100vh;
+            overflow: hidden;
+        }
+
+        .maintitle {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            color: white;
+            text-align: center;
+            padding: 100px;
+            background: linear-gradient(to bottom, rgba(0, 0, 0, 0.95), rgba(0, 0, 0, 0.7));
+        }
+
+        .maintitle h1 {
+            font-size: 5.5em;
+            margin: 0;
+            z-index: 1;
+        }
+
+        .maintitle h2 {
+            font-size: 2em;
+            margin: 0;
+            z-index: 1;
+            margin-top: 20px;
+        }
+
+        .fadingbox {
+            width: 100%;
+            height: 100px;
+            background: linear-gradient(to bottom, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0));
+        }
+
+        .background {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 200%;
+            height: 100%;
+            background: url('./images/MARS_TEAM.jpg') no-repeat center center;
+            background-size: cover;
+            animation: pan 30s ease-in-out infinite;
+            animation-delay: -7.5s;
+            z-index: -2;
+        }
+
+        @keyframes pan {
+            0%, 100% {
+                transform: translateX(-50%);
+            }
+            50% {
+                transform: translateX(0%);
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero {
+                background: url('./images/ELECTRICAL_FUN.jpg') no-repeat center center;
+                background-size: cover;
+            }
+
+            .background {
+                background: none;
+                animation: none;
+                height: 0;
+            }
+
+            .maintitle {
+                padding-left: 10px;
+                padding-right: 10px;
+            }
+
+            .maintitle > h1 {
+                font-size: 3rem;
+            }
+
+            .maintitle > h2 {
+                margin-top: 50px;
+                font-size: 1.5rem;
+            }
+        }
+
+        .about {
+            display: flex;
+            align-items: center;
+            padding: 50px;
+            border-top: 5px solid #e0e0e0;
+            max-width: 1200px;
+        }
+
+        .about-image {
+            flex: 1;
+            background: url('./images/stockimg1.jpg') no-repeat center center;
+            background-size: cover;
+            height: 500px;
+            margin-right: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .about-content {
+            flex: 2;
+            padding: 20px;
+            color: #333;
+        }
+
+        .about-content h2 {
+            font-size: 2.5em;
+            margin-bottom: 20px;
+            color: #444;
+        }
+
+        .about-content p {
+            font-size: 1.2em;
+            color: #555;
+            line-height: 1.6;
+        }
+
+        .about-content ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .about-content ul li {
+            margin: 10px 0;
+            font-size: 1.2em;
+            color: #555;
+            position: relative;
+            padding-left: 2em;
+        }
+
+        .about-content ul li::before {
+            content: "\25B6"; 
+            position: absolute;
+            left: 0;
+            top: -7px;
+            font-size: 1.5em;
+            color: navy;
+        }
+
+        .about-icons {
+            margin-top: 20px;
+            width: auto;
+            display: flex;
+            gap: 20px;
+        }
+
+        .about-icons svg {
+            height: 50px;
+            width: auto;
+            fill: navy;
+        }
+
+        @media (max-width: 768px) {
+            .about {
+                flex-direction: column;
+            }
+
+            .about-image {
+                margin-right: 0;
+                margin-bottom: 20px;
+                height: 300px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="hero">
+        <div class="background"></div>
+        <div class="maintitle">
+            <h1>UVA Mechatronics and Robotics Society (MARS)</h1>
+            <h2>NASA Lunabotics Team</h2>
+        </div>
+        <div class="fadingbox"></div>
+    </div>
+
+    <section class="about">
+        <div class="about-image"></div>
+        <div class="about-content">
+            <h2>About Us</h2>
+            <p>The Mechatronics and Robotics Society (MARS) at UVA is a student-run, experimental engineering club dedicated to creating leaders in STEM.</p>
+            <p>Every year, we build a janky moon rover for the NASA Robotic Mining Competition. This year, our robot will mine regolith to build berms.</p>
+            <ul>
+                <li>Gain hands-on experience in design, machining, circuitry, and coding</li>
+                <li>Practice organizing and collaborating with a professinal engineering team</li>
+                <li>Volunteer to promote STEM in the Charlottesville community</li>
+                <li>Based out of Lacy Hall in Charlottesville, Virginia</li>
+            </ul>
+        </div>
+    </section>
+</body>
+</html>
