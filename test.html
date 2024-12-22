@@ -4,19 +4,22 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>UVA Mechatronics and Robotics Society (MARS)</title>
-    <link rel="icon" href="/images/big-cut-logo.png">
+    <link rel="icon" href="images/big-cut-logo.png">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Text&family=Lexend:wght@100..900&display=swap" rel="stylesheet">
     <style>
         body {
             margin: 0;
-            font-family: Lexend, sans-serif;
-            overflow-x: hidden;
+            font-family: Lexend;
+            background-color: #f9f9f9;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
         }
 
         h1, h2 {
-            margin: 0;
+            font-family: Lexend;
         }
 
         .hero {
@@ -29,133 +32,109 @@
             display: flex;
             flex-direction: column;
             justify-content: center;
-            align-items: center;
             color: white;
             text-align: center;
             padding: 100px;
-            background: linear-gradient(to bottom, rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0.25));
+            background: linear-gradient(to bottom, rgba(0, 0, 0, 0.95), rgba(0, 0, 0, 0.7));
         }
 
         .maintitle h1 {
-            font-size: 5.5em;
+            font-size: 6em;
+            margin: 0;
+            font-weight: bold;
         }
 
         .maintitle h2 {
             font-size: 2em;
+            margin: 0;
             margin-top: 20px;
         }
 
-        .background {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 200%;
-            height: 100%;
-            background: url('./images/MARS_TEAM.jpg') no-repeat center center;
-            background-size: cover;
-            animation: pan 30s ease-in-out infinite;
-            z-index: -2;
+        .footer {
+            width: 100%;
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 20px 10px;
         }
 
-        @keyframes pan {
-            0%, 100% {
-                transform: translateX(-50%);
-            }
-            50% {
-                transform: translateX(0%);
-            }
+        .footer .socials {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin: 10px 0;
         }
 
-        .header {
+        .footer .socials svg {
+            width: 30px;
+            height: 30px;
+            fill: white;
+        }
+
+        .footer .logo {
+            margin: 10px 0;
+        }
+
+        .footer .thin-bar {
+            margin-top: 10px;
+            font-size: 0.8em;
+            background-color: #444;
+            padding: 5px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .footer .thin-bar button {
+            background: none;
+            color: white;
+            border: none;
+            cursor: pointer;
+            text-decoration: underline;
+            font-size: 0.8em;
+        }
+
+        .legal-popup {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: white;
+            border: 1px solid #ccc;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            z-index: 1000;
+            display: none;
+            max-width: 90%;
+            font-size: 0.9em;
+        }
+
+        .legal-popup p {
+            margin: 0;
+        }
+
+        .legal-popup button {
+            margin-top: 20px;
+            padding: 5px 10px;
+            background-color: #333;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+
+        .overlay {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            padding: 10px 20px;
-            transition: background-color 0.3s ease, box-shadow 0.3s ease;
-            z-index: 1000;
-            background-color: transparent;
-            color: rgb(255,255,255);
-        }
-
-        .header.scrolled {
-            background-color: white;
-            color: rgb(0, 0, 0);
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-        }
-
-        .logo {
-            display: flex;
-            align-items: center;
-        }
-
-        .logo img {
-            width: 50px;
-            margin-right: 10px;
-        }
-
-        .logo h1 {
-            font-size: 1.5em;
-            color: black;
-        }
-
-        .nav {
-            display: flex;
-            gap: 20px;
-        }
-
-        .nav a {
-            text-decoration: none;
-            font-weight: normal;
-            transition: font-weight 0.2s;
-        }
-
-        .nav a.active {
-            font-weight: bold;
-        }
-
-        .nav a:hover {
-            text-decoration: underline;
-        }
-
-        @media (max-width: 480px) {
-            .maintitle {
-                padding: 20px;
-            }
-
-            .maintitle h1 {
-                font-size: 3rem;
-            }
-
-            .maintitle h2 {
-                font-size: 1.5rem;
-                margin-top: 20px;
-            }
-
-            .logo h1 {
-                font-size: 1.2em;
-            }
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 999;
+            display: none;
         }
     </style>
 </head>
 <body>
-    <!-- Header -->
-    <header class="header" id="header">
-        <div class="logo">
-            <img src="./images/blue-logo.jpg" alt="MARS Logo">
-            <h1>MARS</h1>
-        </div>
-        <nav class="nav">
-            <a href="index.html" class="active">Home</a>
-            <a href="team.html">Team</a>
-            <a href="blog.html">Blog</a>
-        </nav>
-    </header>
-
-    <!-- Hero Section -->
     <div class="hero">
         <div class="background"></div>
         <div class="maintitle">
@@ -163,25 +142,39 @@
             <h2>NASA Lunabotics Team</h2>
         </div>
     </div>
-    <div class="hero">
-        <div class="background"></div>
-        <div class="maintitle">
-            <h1>UVA Mechatronics and Robotics Society (MARS)</h1>
-            <h2>NASA Lunabotics Team</h2>
+
+    <footer class="footer">
+        <div class="socials">
+            <svg><!-- Placeholder for social icon --></svg>
+            <svg><!-- Placeholder for social icon --></svg>
+            <svg><!-- Placeholder for social icon --></svg>
         </div>
+        <div class="logo">
+            <img src="images/blue-logo.jpg" alt="MARS Logo" width="50">
+            <p>Mechatronics and Robotics Society (MARS) at UVA</p>
+        </div>
+        <div class="thin-bar">
+            <span>&copy; 2024 UVA MARS</span>
+            <button onclick="showLegalPopup()">Legal Disclaimers</button>
+        </div>
+    </footer>
+
+    <div class="overlay" id="overlay" onclick="hideLegalPopup()"></div>
+    <div class="legal-popup" id="legal-popup">
+        <p>Although this organization includes University of Virginia students and may have University employees associated or engaged in its activities and affairs, the organization is not a part of or an agency of the University. It is a separate and independent organization that is responsible for its own activities and affairs. The University does not direct, supervise or control the organization and is not responsible for the organization’s contracts, acts, or omissions. Additionally, the Mechatronics and Robotics Society does not restrict its membership, programs, or activities on the basis of age, color, disability, gender identity, marital status, national or ethnic origin, political affiliation, race, religion, sex (including pregnancy), sexual orientation, veteran status, or family and genetic information.</p>
+        <button onclick="hideLegalPopup()">Close</button>
     </div>
 
     <script>
-        const header = document.getElementById('header');
+        function showLegalPopup() {
+            document.getElementById('legal-popup').style.display = 'block';
+            document.getElementById('overlay').style.display = 'block';
+        }
 
-        window.addEventListener('scroll', () => {
-            if (window.scrollY > 50) {
-                header.classList.add('scrolled');
-            } else {
-                header.classList.remove('scrolled');
-            }
-        });
-
+        function hideLegalPopup() {
+            document.getElementById('legal-popup').style.display = 'none';
+            document.getElementById('overlay').style.display = 'none';
+        }
     </script>
 </body>
 </html>
