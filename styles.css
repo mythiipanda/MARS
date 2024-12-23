@@ -124,7 +124,7 @@
     padding: 10px;
     width: 100%;
     display: flex;    
-    justify-content: space-between;
+    justify-content: space-around;
     align-items: center;
 }
 
@@ -224,7 +224,7 @@
     display: none;
 }
 
-@media (max-width: 480px) {
+@media (max-width: 900px) {
     .footer .thickbar {
         flex-direction: column;
         height: auto;

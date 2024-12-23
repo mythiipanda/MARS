@@ -20,21 +20,15 @@
             justify-content: center;
         }
 
-        .container {
-            overflow-y: scroll;            
-            scroll-snap-type: y mandatory;
-        }
-
-        .container section {
+        section {
             max-width: 1200px;
-            scroll-snap-align: start;
         }
 
         h1, h2 {
             font-family: Lexend;
         }
 
-        .container .hero {
+        .hero {
             position: relative;
             height: 100vh;
             overflow: hidden;
@@ -299,95 +293,90 @@
         </nav>
     </header>
 
+    <section class="hero">
+        <div class="background"></div>
+        <div class="maintitle">
+            <h1>Mechatronics and Robotics Society (MARS) at UVA</h1>
+            <h2>NASA Lunabotics Team</h2>
+        </div>
+        <div class="fadingbox"></div>
+    </section>
 
-    <div class="container">
-       <section class="hero">
-            <div class="background"></div>
-            <div class="maintitle">
-                <h1>Mechatronics and Robotics Society (MARS) at UVA</h1>
-                <h2>NASA Lunabotics Team</h2>
-            </div>
-            <div class="fadingbox"></div>
-        </section>
+    <section class="about">
+        <div class="about-image">
+            <img src="images/stockimg1.jpg">
+        </div>
+        <div class="about-content">
+            <h2>About Us</h2>
+            <p>The Mechatronics and Robotics Society (MARS) at UVA is a student-run, experimental engineering club dedicated to creating leaders in STEM.</p>
+            <p>Every year, we build a janky moon rover for the NASA Robotic Mining Competition. This year, our robot will mine regolith to build berms.</p>
+            <ul>
+                <li>Gain hands-on experience in design, machining, circuitry, and coding</li>
+                <li>Practice organizing and collaborating with a professional engineering team</li>
+                <li>Volunteer to promote STEM in the Charlottesville community</li>
+                <li>Based out of Lacy Hall in Charlottesville, Virginia</li>
+            </ul>
+        </div>
+    </section>
 
-        <section class="about">
-            <div class="about-image">
-                <img src="images/stockimg1.jpg">
-            </div>
-            <div class="about-content">
-                <h2>About Us</h2>
-                <p>The Mechatronics and Robotics Society (MARS) at UVA is a student-run, experimental engineering club dedicated to creating leaders in STEM.</p>
-                <p>Every year, we build a janky moon rover for the NASA Robotic Mining Competition. This year, our robot will mine regolith to build berms.</p>
-                <ul>
-                    <li>Gain hands-on experience in design, machining, circuitry, and coding</li>
-                    <li>Practice organizing and collaborating with a professional engineering team</li>
-                    <li>Volunteer to promote STEM in the Charlottesville community</li>
-                    <li>Based out of Lacy Hall in Charlottesville, Virginia</li>
+    <section class="about">
+        <div class="about-content">
+            <h2>Lunabotics Challenge</h2>
+            <p>An annual challenge for ~60 universities to design and build autonomous rovers for lunar tasks supporting NASA's Artemis Mission.</p>
+            <ul>
+                <li><strong>Objective:</strong> Mine regolith and construct a regolith-based berm to protect lunar landings.</li>
+                <li><strong>Significance:</strong> Supports Artemis goals for sustained Moon habitation and future Mars missions.</li>
+                <li><strong>Requirements:</strong></li>
+                <ul class="sublist">
+                    <li>Build a rover from scratch to compete at annual competition.</li>
+                    <li>Submit a systems engineering paper outlining design.</li>
+                    <li>Submit an outreach paper detailing K-12 engagement.</li>
                 </ul>
-            </div>
-        </section>
+                <li><strong>Innovation:</strong> Exceptional designs may inspire NASA excavation devices for Moon or Mars deployment.</li>
+            </ul>
+        </div>
+        <div class="about-image">            
+            <img src="images/stockimg6.jpg">
+        </div>
+    </section>
 
-        <section class="about">
-            <div class="about-content">
-                <h2>Lunabotics Challenge</h2>
-                <p>An annual challenge for ~60 universities to design and build autonomous rovers for lunar tasks supporting NASA's Artemis Mission.</p>
-                <ul>
-                    <li><strong>Objective:</strong> Mine regolith and construct a regolith-based berm to protect lunar landings.</li>
-                    <li><strong>Significance:</strong> Supports Artemis goals for sustained Moon habitation and future Mars missions.</li>
-                    <li><strong>Requirements:</strong></li>
-                    <ul class="sublist">
-                        <li>Build a rover from scratch to compete at annual competition.</li>
-                        <li>Submit a systems engineering paper outlining design.</li>
-                        <li>Submit an outreach paper detailing K-12 engagement.</li>
-                    </ul>
-                    <li><strong>Innovation:</strong> Exceptional designs may inspire NASA excavation devices for Moon or Mars deployment.</li>
-                </ul>
-            </div>
-            <div class="about-image">            
-                <img src="images/stockimg6.jpg">
-            </div>
-        </section>
-
-        <section class="involve">
-            <div class="headingrow">
-                <h2>Get Involved</h2>
-                <p>We'd love your help. Reach out in the way that works best for you, and we’ll handle the rest.</p>
-            </div>
-            <div class="contentrow">
-                <div class="help">
-                    <h3>Sponsors</h3>
-                    <div class="icon">
-                        &#x1F911;
-                    </div>
-                    <p>
-                        We accept any donation, no matter the size. 
-                        Your donations provide the resources necessary for the team to inspire new generations to develop essential engineering skills. 
-                        Also, We'd love to hear about the various opportunities available to our members! We  highly appreciate advice from professionals in the workplace.
-                    </p>
+    <section class="involve">
+        <div class="headingrow">
+            <h2>Get Involved</h2>
+            <p>We'd love your help. Reach out in the way that works best for you, and we’ll handle the rest.</p>
+        </div>
+        <div class="contentrow">
+            <div class="help">
+                <h3>Sponsors</h3>
+                <div class="icon">
+                    &#x1F911;
                 </div>
-                <div class="help">
-                    <h3>Mentors</h3>
-                    <div class="icon">
-                        &#x1F9E0;
-                    </div>
-                    <p>
-                        Are you interested in teaching and demonstrating your passion for engineering, math and science? Become a part of our mechanical, electrical, or computer teams and make an impact on the next generation of engineers! Your experience and advice will be highly valued and greatly appreciated!  
-                    </p>
-                </div>
-                <div class="help">
-                    <h3>Students</h3>
-                    <div class="icon">
-                        <!-- &#x1F6E0; -->
-                        &#x1F528;
-                    </div>
-                    <p>
-                        The success of the team is due to the diversity, creativity, and dedication of our members; responsibility and commitment are essential for the team to succeed. We hope that you will create friendships and gain skills that inspire your future career. You don't have to be an engineering student; we are always looking for people who are driven, dedicated, and committed!                  </p>
-                </div>
+                <p>
+                    We accept any donation, no matter the size. 
+                    Your donations provide the resources necessary for the team to inspire new generations to develop essential engineering skills. 
+                    Also, We'd love to hear about the various opportunities available to our members! We  highly appreciate advice from professionals in the workplace.
+                </p>
             </div>
-        </section>
-    </div>
-
-    
+            <div class="help">
+                <h3>Mentors</h3>
+                <div class="icon">
+                    &#x1F9E0;
+                </div>
+                <p>
+                    Are you interested in teaching and demonstrating your passion for engineering, math and science? Become a part of our mechanical, electrical, or computer teams and make an impact on the next generation of engineers! Your experience and advice will be highly valued and greatly appreciated!  
+                </p>
+            </div>
+            <div class="help">
+                <h3>Students</h3>
+                <div class="icon">
+                    <!-- &#x1F6E0; -->
+                    &#x1F528;
+                </div>
+                <p>
+                    The success of the team is due to the diversity, creativity, and dedication of our members; responsibility and commitment are essential for the team to succeed. We hope that you will create friendships and gain skills that inspire your future career. You don't have to be an engineering student; we are always looking for people who are driven, dedicated, and committed!                  </p>
+            </div>
+        </div>
+    </section>
 
     <footer class="footer">
         <div class="thickbar">

@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>UVA Mechatronics and Robotics Society (MARS)</title>
+    <title>Mechatronics and Robotics Society (MARS) at UVA</title>
     <link rel="icon" href="images/big-cut-logo.png">
     <link rel="stylesheet" href="styles.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -20,6 +20,10 @@
             justify-content: center;
         }
 
+        section {
+            max-width: 1200px;
+        }
+
         h1, h2 {
             font-family: Lexend;
         }
@@ -28,6 +32,7 @@
             position: relative;
             height: 100vh;
             overflow: hidden;
+            max-width: none;
         }
 
         .maintitle {
@@ -113,17 +118,22 @@
             display: flex;
             align-items: center;
             padding: 50px;
-            border-top: 5px solid #e0e0e0;
-            max-width: 1200px;
+            /* border-top: 5px solid #e0e0e0; */
+            gap: 20px;
         }
 
         .about-image {
-            flex: 1;
-            background: url('images/stockimg1.jpg') no-repeat center center;
+            flex: 2;
+            /* background: url('images/stockimg1.jpg') no-repeat center center;
             background-size: cover;
-            height: 500px;
-            margin-right: 20px;
-            border-radius: 10px;
+            height: 500px; */
+        }
+
+        .about-image img {
+            object-fit: cover;            
+            height: 600px;
+            width: 100%;
+            border-radius: 20px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
         }
 
@@ -134,14 +144,13 @@
         }
 
         .about-content h2 {
-            font-size: 2.5em;
+            font-size: 3rem;
             margin-bottom: 20px;
-            color: #444;
+            /* text-align: center; */
         }
 
         .about-content p {
             font-size: 1.2em;
-            color: #555;
             line-height: 1.6;
         }
 
@@ -154,12 +163,24 @@
         .about-content ul li {
             margin: 10px 0;
             font-size: 1.2em;
-            color: #555;
             position: relative;
             padding-left: 2em;
         }
 
         .about-content ul li::before {
+            content: "\25E6"; 
+            position: absolute;
+            left: 0;
+            top: -25px;
+            font-size: 3em;
+            color: navy;
+        }
+
+        .about-content .sublist {
+            margin-left: 50px;
+        }
+
+        .about-content .sublist li::before {
             content: "\25E6"; 
             position: absolute;
             left: 0;
@@ -183,7 +204,8 @@
 
         @media (max-width: 768px) {
             .about {
-                flex-direction: column;
+                flex-direction: column-reverse;
+                padding: 10px;
             }
 
             .about-image {
@@ -192,6 +214,70 @@
                 height: 300px;
             }
         }
+
+        .involve {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            color: #333;
+        }
+        
+        .involve .headingrow h2{
+            font-size: 3rem;
+        }
+
+        .involve p {
+            font-size: 1.2em;
+            line-height: 1.6;
+        }
+
+        .involve .contentrow {
+            display: flex;
+            gap: 40px;
+            justify-content: center;
+            margin: 40px 0;
+        }
+
+        .involve .contentrow .help {
+            width: 100%;
+            background-color: #ddd;
+            padding: 10px 30px;
+            border-radius: 60px;
+        }
+
+        .involve .contentrow .help p {
+            text-align: start;
+        }
+
+        .involve .contentrow .help h3 {
+            font-size: 2rem;
+        }
+
+        .involve .contentrow .help .icon {
+            font-size: 7rem;
+            margin-top: -20px;
+            color: blue;
+        }
+
+        @media (max-width: 768px) {
+            .involve .contentrow {
+                flex-direction: column;
+            }
+        }
+
+        @media (max-width: 1250px) {
+            .involve {
+                padding: 20px;
+                gap: 0;
+            }
+
+            .involve .contentrow .help {
+                width: auto;
+            }
+        }
+
+
     </style>
 </head>
 <body>
@@ -217,7 +303,9 @@
     </section>
 
     <section class="about">
-        <div class="about-image"></div>
+        <div class="about-image">
+            <img src="images/stockimg1.jpg">
+        </div>
         <div class="about-content">
             <h2>About Us</h2>
             <p>The Mechatronics and Robotics Society (MARS) at UVA is a student-run, experimental engineering club dedicated to creating leaders in STEM.</p>
@@ -228,6 +316,65 @@
                 <li>Volunteer to promote STEM in the Charlottesville community</li>
                 <li>Based out of Lacy Hall in Charlottesville, Virginia</li>
             </ul>
+        </div>
+    </section>
+
+    <section class="about">
+        <div class="about-content">
+            <h2>Lunabotics Challenge</h2>
+            <p>An annual challenge for ~60 universities to design and build autonomous rovers for lunar tasks supporting NASA's Artemis Mission.</p>
+            <ul>
+                <li><strong>Objective:</strong> Mine regolith and construct a regolith-based berm to protect lunar landings.</li>
+                <li><strong>Significance:</strong> Supports Artemis goals for sustained Moon habitation and future Mars missions.</li>
+                <li><strong>Requirements:</strong></li>
+                <ul class="sublist">
+                    <li>Build a rover from scratch to compete at annual competition.</li>
+                    <li>Submit a systems engineering paper outlining design.</li>
+                    <li>Submit an outreach paper detailing K-12 engagement.</li>
+                </ul>
+                <li><strong>Innovation:</strong> Exceptional designs may inspire NASA excavation devices for Moon or Mars deployment.</li>
+            </ul>
+        </div>
+        <div class="about-image">            
+            <img src="images/stockimg6.jpg">
+        </div>
+    </section>
+
+    <section class="involve">
+        <div class="headingrow">
+            <h2>Get Involved</h2>
+            <p>We'd love your help. Reach out in the way that works best for you, and we’ll handle the rest.</p>
+        </div>
+        <div class="contentrow">
+            <div class="help">
+                <h3>Sponsors</h3>
+                <div class="icon">
+                    &#x1F911;
+                </div>
+                <p>
+                    We accept any donation, no matter the size. 
+                    Your donations provide the resources necessary for the team to inspire new generations to develop essential engineering skills. 
+                    Also, We'd love to hear about the various opportunities available to our members! We  highly appreciate advice from professionals in the workplace.
+                </p>
+            </div>
+            <div class="help">
+                <h3>Mentors</h3>
+                <div class="icon">
+                    &#x1F9E0;
+                </div>
+                <p>
+                    Are you interested in teaching and demonstrating your passion for engineering, math and science? Become a part of our mechanical, electrical, or computer teams and make an impact on the next generation of engineers! Your experience and advice will be highly valued and greatly appreciated!  
+                </p>
+            </div>
+            <div class="help">
+                <h3>Students</h3>
+                <div class="icon">
+                    <!-- &#x1F6E0; -->
+                    &#x1F528;
+                </div>
+                <p>
+                    The success of the team is due to the diversity, creativity, and dedication of our members; responsibility and commitment are essential for the team to succeed. We hope that you will create friendships and gain skills that inspire your future career. You don't have to be an engineering student; we are always looking for people who are driven, dedicated, and committed!                  </p>
+            </div>
         </div>
     </section>
 
