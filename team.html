@@ -74,14 +74,14 @@
             gap: 30px;
         }
 
-        @media (max-width: 1300px) { 
+        @media (max-width: 1300px) {
             .group .members {
                 grid-template-columns: repeat(3, 1fr);
                 padding: 20px;
             }
         }
 
-        @media (max-width: 900px) { 
+        @media (max-width: 900px) {
             .group .members {
                 grid-template-columns: 1fr 1fr;
             }
@@ -167,7 +167,7 @@
             background-color: #c27c0e;
         }
 
-        @media (max-width: 600px) { 
+        @media (max-width: 600px) {
             .group .members {
                 grid-template-columns: 1fr;
             }
@@ -330,7 +330,7 @@
             </div>
         </div>
         <div class="thinbar">
-            <p>&copy; 2024 MARS @ UVA</p>
+            <p>&copy; <span id="year">2024</span> MARS @ UVA</p>
             <button onclick="showLegalPopup()">Legal Disclaimers</button>
         </div>
     </footer>
@@ -452,9 +452,33 @@
                 // img.src = defaultimgs[Math.floor(Math.random() * defaultimgs.length)];
                 img.src = 'images/members/default1.jpg';
             };
-            
+
             return card;
         }
+    </script>
+
+    <script>
+        async function updateYear() {
+            try {
+                // Fetch the current date from a public API
+                const response = await fetch('https://worldtimeapi.org/api/ip');
+                if (!response.ok) {
+                    throw new Error('Failed to fetch date');
+                }
+                const data = await response.json();
+
+                // Extract the current year
+                const currentYear = new Date(data.datetime).getFullYear();
+
+                // Update the footer's year
+                document.getElementById('year').innerText = currentYear;
+            } catch (error) {
+                console.error('Error updating year:', error);
+            }
+        }
+
+        // Call the function on page load
+        updateYear();
     </script>
 
 
