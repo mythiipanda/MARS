@@ -62,6 +62,7 @@
 
 .nav a:hover {
     background-color: rgba(255, 255, 255, 0.5);
+    transform: scale(1.1);
 }
 
 .nav a.active {
@@ -79,7 +80,12 @@
     /* background-color: rgba(0, 0, 0, 0.2); */
     border-width: 3px;
     border-color: black;
-    border-style: solid;
+    border-style: solid;    
+    transition: transform 0.3s ease;
+}
+
+.nav a.scrolled:hover {
+    transform: scale(1.1);
 }
 
 @media (max-width: 480px) {
@@ -151,10 +157,12 @@
     width: 40px;
     height: auto;
     fill: white;
+    transition: transform 0.3s ease;
 }
 
 .footer svg:hover {
     fill: #e47000;
+    transform: scale(1.4);
 }
 
 .footer .email {
@@ -163,6 +171,10 @@
     padding: 10px 0;
     gap: 20px;
     color: white;
+}
+
+.footer .email svg {
+    width: 30px;
 }
 
 .footer .email h2:hover {
