@@ -146,7 +146,7 @@
         .about-content {
             flex: 2;
             padding: 20px;
-            color: #333;
+            color: black;
         }
 
         .about-content h2 {
@@ -226,7 +226,7 @@
             flex-direction: column;
             align-items: center;
             text-align: center;
-            color: #333;
+            color: black;
         }
 
         .involve .headingrow h2,
@@ -276,7 +276,7 @@
             flex-direction: column;
             align-items: center;
             text-align: center;
-            color: #333;
+            color: black;
             margin-bottom: 60px;
             max-width: 1200px;
         }
@@ -318,6 +318,101 @@
                 margin: 20px 0;
             }
         }
+
+        #latestblogpost a {
+            text-decoration: none;
+            color: black;
+        }
+
+        .thumbnail {
+            display: flex;
+            max-width: 1000px;
+            gap: 20px;
+            border-width: 2px;
+            border-style: solid;
+            margin: 20px;
+            transition: transform 0.3s ease;
+            background-color: #FFF;
+        }
+
+        .thumbnail:hover {
+            transform: scale(1.05);
+            background-color: rgb(255, 228, 218);
+        }
+
+        .thumbnail .mainpic {
+            flex: 1;
+            width: 100%;
+            aspect-ratio: 4/3;
+            object-fit: cover;
+        }
+
+        .thumbnail .info {
+            flex: 1;
+            padding-right: 20px;
+            height: 100%;
+        }
+
+        .thumbnail .info h2 {
+            font-size: 2rem;
+        }
+
+        .thumbnail .info .meta {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-top: -10px;
+        }
+
+        .thumbnail .info .meta .stack {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .thumbnail .info .meta .stack p {
+            margin: 0;
+            font-weight: 300;
+        }
+
+        .thumbnail .info .meta img {
+            height: 35px;
+            width: 35px;
+            object-fit: cover;
+            border-radius: 50%;
+        }
+
+        @media (max-width: 500px) {
+            .thumbnail {
+                flex-direction: column;
+                margin: 20px 10px;
+            }
+
+            .thumbnail .info {
+                padding: 0 15px;
+            }
+
+            .thumbnail .info h2 {
+                font-size: 1.75rem;
+            }
+
+            .thumbnail .info p {
+                font-size: .9rem;
+            }
+        }
+
+        .latestblogpost {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            color: black;
+            margin-bottom: 60px;
+            /* max-width: 1200px; */
+        }
+
+        .latestblogpost h2 {
+            font-size: 3rem;
+        }
+
     </style>
 </head>
 
@@ -432,6 +527,15 @@
         </div>
     </section>
 
+    <section class="latestblogpost">
+        <h2>
+            Latest blogpost
+        </h2>
+        <div id="latestblogpost">
+            <!-- This will auto inject the top thumbnail on the blogs page -->
+        </div>     
+    </section>
+
     <section class="sponsors">
         <h2>Our Sponsors (thanks!)</h2>
         <div class="sponsorsrow">
@@ -528,6 +632,39 @@
     </script>
 
     <script src="index.js"></script>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const blogPageURL = "/blog.html"; // Replace with the actual URL of your blog page.
+    
+            fetch(blogPageURL)
+                .then(response => response.text())
+                .then(html => {
+                    // Parse the blog page HTML.
+                    const parser = new DOMParser();
+                    const doc = parser.parseFromString(html, "text/html");
+    
+                    // Find the first thumbnail.
+                    const firstThumbnail = doc.querySelector("a .thumbnail");
+                    
+                    if (firstThumbnail) {
+                        // Clone the thumbnail and its parent link.
+                        const parentLink = firstThumbnail.closest("a").cloneNode(true);
+    
+                        // Insert into the homepage's "latestblogpost" section.
+                        const latestBlogPostSection = document.getElementById("latestblogpost");
+                        if (latestBlogPostSection) {
+                            latestBlogPostSection.innerHTML = ""; // Clear any existing content.
+                            latestBlogPostSection.appendChild(parentLink);
+                        }
+                    }
+                })
+                .catch(error => {
+                    console.error("Failed to fetch blog page:", error);
+                });
+        });
+    </script>
+    
 </body>
 
 </html>
