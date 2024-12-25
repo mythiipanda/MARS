@@ -634,39 +634,80 @@
     </script>
 
     <script src="index.js"></script>
+    <script type="module">
+        // Import the functions you need from the SDKs you need
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
+        import { getFirestore, collection, getDocs } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
 
-    <script>
-        document.addEventListener("DOMContentLoaded", () => {
-            const blogPageURL = "blog.html"; // Replace with the actual URL of your blog page.
-    
-            fetch(blogPageURL)
-                .then(response => response.text())
-                .then(html => {
-                    // Parse the blog page HTML.
-                    const parser = new DOMParser();
-                    const doc = parser.parseFromString(html, "text/html");
-    
-                    // Find the first thumbnail.
-                    const firstThumbnail = doc.querySelector("a .thumbnail");
-                    
-                    if (firstThumbnail) {
-                        // Clone the thumbnail and its parent link.
-                        const parentLink = firstThumbnail.closest("a").cloneNode(true);
-    
-                        // Insert into the homepage's "latestblogpost" section.
-                        const latestBlogPostSection = document.getElementById("latestblogpost");
-                        if (latestBlogPostSection) {
-                            latestBlogPostSection.innerHTML = ""; // Clear any existing content.
-                            latestBlogPostSection.appendChild(parentLink);
-                        }
+        const firebaseConfig = {
+            apiKey: "AIzaSyA-anj-4HaCDXyS3nkIu5_hNCE7FvTyhN4",
+            authDomain: "mars-website-731e1.firebaseapp.com",
+            projectId: "mars-website-731e1",
+            storageBucket: "mars-website-731e1.firebasestorage.app",
+            messagingSenderId: "307236284511",
+            appId: "1:307236284511:web:351debbd49b60cfd4613ea"
+        };
+
+        // Initialize Firebase
+        const app = initializeApp(firebaseConfig);
+        const db = getFirestore(app);
+
+        async function loadBlogPosts() {
+            const latestBlogPostSection = document.getElementById("latestblogpost");
+            if (!latestBlogPostSection) {
+                console.error("latestblogpost section not found");
+                return;
+            }
+
+            try {
+                const querySnapshot = await getDocs(collection(db, "blogPosts"));
+                if (querySnapshot.empty) {
+                    latestBlogPostSection.innerHTML = "<p>No blog posts found.</p>";
+                    return;
+                }
+
+                // Get the most recent blog post
+                let latestPost = null;
+                let latestDate = null;
+                querySnapshot.forEach((doc) => {
+                    const post = doc.data();
+                    const postDate = new Date(post.date);
+                    if (!latestDate || postDate > latestDate) {
+                        latestPost = post;
+                        latestDate = postDate;
                     }
-                })
-                .catch(error => {
-                    console.error("Failed to fetch blog page:", error);
                 });
-        });
+
+                if (latestPost) {
+                    const thumbnailHTML = `
+                        <a href="blog.html">
+                            <div class="thumbnail">
+                                <img class="mainpic" src="${latestPost.sections[0].image}" alt="Blog Post Image">
+                                <div class="info">
+                                    <h2>${latestPost.title}</h2>
+                                    <div class="meta">
+                                        <img src="images/members/default1.jpg" alt="pfp">
+                                        <div class="stack">
+                                            <p class="author">${latestPost.author}</p>
+                                            <p class="date">${latestPost.date}</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                    `;
+                    latestBlogPostSection.innerHTML = thumbnailHTML;
+                } else {
+                    latestBlogPostSection.innerHTML = "<p>No blog posts found.</p>";
+                }
+            } catch (error) {
+                console.error("Error loading blog posts:", error);
+                latestBlogPostSection.innerHTML = "<p>Error loading blog posts.</p>";
+            }
+        }
+
+        loadBlogPosts();
     </script>
-    
 </body>
 
 </html>

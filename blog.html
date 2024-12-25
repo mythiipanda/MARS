@@ -138,52 +138,68 @@
         <h1>Blog</h1>
     </section>
 
-    <a href="blog/dec2024.html">
-        <section class="thumbnail">
-            <img src="blog/images/dec 2024 marsgiving kareoke.jpg" alt="" class="mainpic">
-            <div class="info">
-                <h2 class="title">Fall 2024 Socials and Concessions</h2>
-                <div class="meta">
-                    <img src="images/members/Amith Polineni.jpg" alt="pfp">
-                    <div class="stack">
-                        <p class="author">Amith Polineni</p>
-                        <p class="date">December 2024</p>
-                    </div>
-                </div>
-                <p class="description">
-                    Fall semester was jam-packed with progress. We are well underway with our robot designs and training
-                    the next generation of engineers. But on the side, we've enjoyed social events and manning concessions booths. From marsgiving to a
-                    Sabrina Carpenter concert, the MARS team knows how to throw a good func.
-                </p>
-            </div>
-        </section>
-    </a>
+    <div id="blog-posts-container">
+        <!-- Blog posts will be dynamically inserted here -->
+    </div>
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
+        import { getFirestore, collection, getDocs } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
 
+        const firebaseConfig = {
+            apiKey: "AIzaSyA-anj-4HaCDXyS3nkIu5_hNCE7FvTyhN4",
+            authDomain: "mars-website-731e1.firebaseapp.com",
+            projectId: "mars-website-731e1",
+            storageBucket: "mars-website-731e1.firebasestorage.app",
+            messagingSenderId: "307236284511",
+            appId: "1:307236284511:web:351debbd49b60cfd4613ea"
+        };
 
-    <a href="blog/mar2024.html">
-        <section class="thumbnail">
-            <img src="blog/images/girl scout outreach event.png" alt="" class="mainpic">
-            <div class="info">
-                <h2 class="title">Won't You Be MARS' Valentine? January and February Recap!</h2>
-                <div class="meta">
-                    <img src="images/members/default1.jpg" alt="pfp">
-                    <div class="stack">
-                        <p class="author">Cayla Celis</p>
-                        <p class="date">March 10th 2024</p>
-                    </div>
-                </div>
-                <p class="description">
-                    Hey everyone! So much has happened from our last update, so let’s get started!
+        // Initialize Firebase
+        const app = initializeApp(firebaseConfig);
+        const db = getFirestore(app);
 
-                    We started off the semester with a bang! ...er, outreach event!
+        async function loadBlogPosts() {
+            const blogPostsContainer = document.getElementById("blog-posts-container");
+            if (!blogPostsContainer) {
+                console.error("blog-posts-container not found");
+                return;
+            }
 
-                    Before classes resumed, a few of our members (including me!) gave a presentation to local high
-                    school . . .
+            try {
+                const querySnapshot = await getDocs(collection(db, "blogPosts"));
+                if (querySnapshot.empty) {
+                    blogPostsContainer.innerHTML = "<p>No blog posts found.</p>";
+                    return;
+                }
 
-                </p>
-            </div>
-        </section>
-    </a>
+                let blogPostsHTML = "";
+                querySnapshot.forEach((doc) => {
+                    const post = doc.data();
+                    const maxSubtitleLength = 150;
+                    const truncatedSubtitle = post.subtitle.length > maxSubtitleLength
+                        ? post.subtitle.substring(0, maxSubtitleLength) + "..."
+                        : post.subtitle;
+                        blogPostsHTML += `
+                            <a href="blog-post.html?id=${post.id}">
+                                <section class="thumbnail">
+                                    <img src="./${post.sections[0].image.replace(/\s/g, '%20')}" alt="" class="mainpic">
+                                    <div class="info">
+                                        <h2 class="title">${post.title}</h2>
+                                        ...
+                                    </div>
+                                </section>
+                            </a>
+                        `;
+                });
+                blogPostsContainer.innerHTML = blogPostsHTML;
+            } catch (error) {
+                console.error("Error loading blog posts:", error);
+                blogPostsContainer.innerHTML = "<p>Error loading blog posts.</p>";
+            }
+        }
+
+        loadBlogPosts();
+    </script>
 
 
     <footer class="footer">
@@ -236,7 +252,7 @@
             </div>
         </div>
         <div class="thinbar">
-            <p>&copy; <span id="year">2024</span> MARS @ UVA</p>
+            <p>© <span id="year">2024</span> MARS @ UVA</p>
             <button onclick="showLegalPopup()">Legal Disclaimers</button>
         </div>
     </footer>
